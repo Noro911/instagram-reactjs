@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   IoIosArrowDroprightCircle,
   IoIosArrowDropleftCircle,
@@ -6,6 +6,8 @@ import {
 
 export const StoriesBar = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -25,13 +27,26 @@ export const StoriesBar = () => {
     }
   };
 
+  const checkScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
+    }
+  };
+
   return (
     <div className="w-full py-5 flex items-center relative">
-      <button onClick={scrollLeft} className="absolute left-4 z-50">
+      <button
+        onClick={scrollLeft}
+        className={`absolute left-4 z-50 ${canScrollLeft ? "" : "hidden"}`}
+      >
         <IoIosArrowDropleftCircle size={30} color="white" />
       </button>
       <div
         ref={scrollContainerRef}
+        onScroll={checkScrollPosition}
         className="flex overflow-x-auto space-x-4 scrollbar-hide"
       >
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
@@ -50,7 +65,10 @@ export const StoriesBar = () => {
           </div>
         ))}
       </div>
-      <button onClick={scrollRight} className="absolute right-4 z-50">
+      <button
+        onClick={scrollRight}
+        className={`absolute right-4 z-50 ${canScrollRight ? "" : "hidden"}`}
+      >
         <IoIosArrowDroprightCircle size={30} color="white" />
       </button>
     </div>

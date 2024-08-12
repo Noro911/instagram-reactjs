@@ -661,6 +661,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .size-3 {
   width: 0.75rem;
   height: 0.75rem;
