@@ -16,24 +16,37 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const HomeLazyImport = createFileRoute('/home')()
+const ExploreLazyImport = createFileRoute('/explore')()
+const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const HomeLazyRoute = HomeLazyImport.update({
-  path: '/home',
+const ExploreLazyRoute = ExploreLazyImport.update({
+  path: '/explore',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/home.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/explore.lazy').then((d) => d.Route))
+
+const IndexLazyRoute = IndexLazyImport.update({
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeLazyImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -41,7 +54,10 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ HomeLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexLazyRoute,
+  ExploreLazyRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -51,11 +67,15 @@ export const routeTree = rootRoute.addChildren({ HomeLazyRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/home"
+        "/",
+        "/explore"
       ]
     },
-    "/home": {
-      "filePath": "home.lazy.tsx"
+    "/": {
+      "filePath": "index.lazy.tsx"
+    },
+    "/explore": {
+      "filePath": "explore.lazy.tsx"
     }
   }
 }

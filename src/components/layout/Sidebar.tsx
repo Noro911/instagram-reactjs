@@ -1,10 +1,13 @@
 import { SIDEBAR_MENU } from "../../constants";
 import { IoReorderFour } from "react-icons/io5";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import React from "react";
 
-export const Sidebar = () => {
-  const { pathname } = useLocation();
+interface IProps {
+  pathname: string;
+}
 
+export const Sidebar: React.FC<IProps> = ({ pathname }) => {
   return (
     <div className="w-full h-full flex flex-col px-3 justify-between">
       <div>
@@ -29,9 +32,9 @@ export const Sidebar = () => {
           <Link
             key={item.id}
             to={item.path}
-            className={`w-full flex items-center my-3 py-3 pl-6 hover:bg-dark-600 hover:bg-opacity-40 hover:rounded-lg ${pathname.includes(item.path) ? "font-bold" : ""}`}
+            className={`w-full flex items-center my-3 py-3 pl-6 hover:bg-dark-600 hover:bg-opacity-40 hover:rounded-lg ${`/${pathname.split("/")[1]}` == item.path ? "font-bold" : ""}`}
           >
-            {pathname.includes(item.path) ? (
+            {`/${pathname.split("/")[1]}` == item.path ? (
               <item.boldIcon className="text-3xl text-white" />
             ) : (
               <item.icon className="text-3xl text-white" />

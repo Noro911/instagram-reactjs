@@ -12,3 +12,7 @@ html {
   font-family: "Lato", sans-serif;
   font-size: 16px;
 }
+
+.instagram-gradient {
+  background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7);
+}
