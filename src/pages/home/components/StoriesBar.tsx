@@ -61,7 +61,7 @@ export const StoriesBar = () => {
                 alt=""
               />
             </div>
-            <span className="text-white text-sm">eunwo.o_c</span>
+            <span className="dark:text-white text-sm">eunwo.o_c</span>
           </div>
         ))}
       </div>
