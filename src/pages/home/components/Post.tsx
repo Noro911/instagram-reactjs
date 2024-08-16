@@ -1,12 +1,33 @@
+import { useState } from "react";
+
 import { PiDotsThreeBold } from "react-icons/pi";
 import { VscHeart } from "react-icons/vsc";
 import { IoChatbubbleOutline } from "react-icons/io5";
 import { BsSend } from "react-icons/bs";
 import { GoBookmark } from "react-icons/go";
+import {
+  IoIosArrowDroprightCircle,
+  IoIosArrowDropleftCircle,
+} from "react-icons/io";
+
+import { images } from "../../../constants/dummy";
 
 export const Post = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const goToNextImage = () => {
+    setCurrentIndex((pre: number) =>
+      pre != images.length - 1 ? pre + 1 : pre,
+    );
+  };
+
+  const backToPreviousImage = () => {
+    setCurrentIndex((pre: number) => (pre != 0 ? pre - 1 : pre));
+  };
+
   return (
-    <div className="w-3/5 dark:text-white" style={{ margin: "0px auto" }}>
+    <div className="w-3/5 dark:text-white m-center">
       <div className="flex justify-between w-full items-center mb-3">
         <div className="flex items-center">
           <div className="w-[50px] h-[50px] rounded-full instagram-gradient relative">
@@ -21,12 +42,48 @@ export const Post = () => {
         </div>
         <PiDotsThreeBold className="" size={30} />
       </div>
-      <div className="w-full h-[500px] overflow-hidden">
-        <img
-          className="w-full h-auto object-cover"
-          src="https://preview.redd.it/230704-cha-eunwoo-instagram-update-v0-muu3lwl5yy9b1.jpg?width=1080&crop=smart&auto=webp&s=4da51587784e2a9106d288daca9832ee36fca2bd"
-          alt=""
-        />
+      <div
+        className="w-full h-[450px] overflow-hidden relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div
+          className={`absolute top-3 right-2 w-[65px] text-black bg-white py-2 rounded-3xl text-center opacity-80 z-50 ${isHovered ? "" : "hidden"}`}
+        >
+          {currentIndex + 1}/{images.length}
+        </div>
+        <button
+          className={`absolute top-1/2 left-2 opacity-80 z-50 ${isHovered && currentIndex != 0 ? "" : "hidden"}`}
+          onClick={backToPreviousImage}
+        >
+          <IoIosArrowDropleftCircle size={30} />
+        </button>
+        <div
+          className="flex transition-transform duration-500"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {images.map((img, i) => (
+            <img
+              key={i}
+              className="w-full h-auto object-cover flex-shrink-0"
+              src={currentIndex == i ? img : ""}
+              alt=""
+            />
+          ))}
+        </div>
+        <div className="flex space-x-1 absolute bottom-4 left-1/2">
+          {images.map((_, i) => (
+            <div
+              className={`w-[6px] h-[6px] rounded-full bg-white ${currentIndex == i ? "" : "opacity-50"}`}
+            ></div>
+          ))}
+        </div>
+        <button
+          className={`absolute top-1/2 right-2 opacity-80 z-50 ${isHovered && currentIndex != images.length - 1 ? "" : "hidden"}`}
+          onClick={goToNextImage}
+        >
+          <IoIosArrowDroprightCircle size={30} />
+        </button>
       </div>
       <div id="action" className="py-2  flex justify-between">
         <div className="flex space-x-3">

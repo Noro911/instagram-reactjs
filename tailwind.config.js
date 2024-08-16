@@ -15,6 +15,9 @@ module.exports = {
           950: "#000000",
         },
       },
+      margin: {
+        center: "0 auto",
+      },
     },
   },
   darkMode: "media",

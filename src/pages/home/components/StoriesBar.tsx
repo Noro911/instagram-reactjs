@@ -37,7 +37,7 @@ export const StoriesBar = () => {
   };
 
   return (
-    <div className="w-full py-5 flex items-center relative">
+    <div className="w-5/6 py-5 flex items-center relative m-center">
       <button
         onClick={scrollLeft}
         className={`absolute left-4 z-50 ${canScrollLeft ? "" : "hidden"}`}
