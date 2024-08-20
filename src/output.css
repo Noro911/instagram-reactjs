@@ -567,12 +567,24 @@ video {
   position: relative;
 }
 
+.bottom-4 {
+  bottom: 1rem;
+}
+
 .left-1\/2 {
   left: 50%;
 }
 
+.left-2 {
+  left: 0.5rem;
+}
+
 .left-4 {
   left: 1rem;
+}
+
+.right-2 {
+  right: 0.5rem;
 }
 
 .right-4 {
@@ -581,30 +593,6 @@ video {
 
 .top-1\/2 {
   top: 50%;
-}
-
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
-.bottom-5 {
-  bottom: 1.25rem;
-}
-
-.bottom-4 {
-  bottom: 1rem;
-}
-
-.left-2 {
-  left: 0.5rem;
-}
-
-.right-2 {
-  right: 0.5rem;
-}
-
-.top-1 {
-  top: 0.25rem;
 }
 
 .top-3 {
@@ -674,17 +662,12 @@ video {
   display: none;
 }
 
-.size-3 {
-  width: 0.75rem;
-  height: 0.75rem;
-}
-
 .h-\[41px\] {
   height: 41px;
 }
 
-.h-\[500px\] {
-  height: 500px;
+.h-\[450px\] {
+  height: 450px;
 }
 
 .h-\[50px\] {
@@ -693,6 +676,10 @@ video {
 
 .h-\[61px\] {
   height: 61px;
+}
+
+.h-\[6px\] {
+  height: 6px;
 }
 
 .h-\[70px\] {
@@ -711,36 +698,12 @@ video {
   height: 100vh;
 }
 
-.h-\[400px\] {
-  height: 400px;
-}
-
-.h-\[450px\] {
-  height: 450px;
-}
-
-.h-\[5px\] {
-  height: 5px;
-}
-
-.h-\[10px\] {
-  height: 10px;
-}
-
-.h-\[8px\] {
-  height: 8px;
-}
-
-.h-\[6px\] {
-  height: 6px;
-}
-
 .w-3\/5 {
   width: 60%;
 }
 
-.w-4\/5 {
-  width: 80%;
+.w-5\/6 {
+  width: 83.333333%;
 }
 
 .w-\[41px\] {
@@ -755,44 +718,20 @@ video {
   width: 61px;
 }
 
-.w-\[70px\] {
-  width: 70px;
-}
-
-.w-full {
-  width: 100%;
-}
-
-.w-5\/6 {
-  width: 83.333333%;
-}
-
-.w-\[5px\] {
-  width: 5px;
-}
-
-.w-\[10px\] {
-  width: 10px;
-}
-
-.w-\[8px\] {
-  width: 8px;
+.w-\[65px\] {
+  width: 65px;
 }
 
 .w-\[6px\] {
   width: 6px;
 }
 
-.w-\[20px\] {
-  width: 20px;
+.w-\[70px\] {
+  width: 70px;
 }
 
-.w-\[60px\] {
-  width: 60px;
-}
-
-.w-\[65px\] {
-  width: 65px;
+.w-full {
+  width: 100%;
 }
 
 .flex-none {
@@ -843,6 +782,12 @@ video {
   gap: 1rem;
 }
 
+.space-x-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
@@ -867,18 +812,6 @@ video {
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 
-.space-x-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -887,16 +820,12 @@ video {
   overflow-x: auto;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
 .rounded-3xl {
   border-radius: 1.5rem;
 }
 
-.rounded-2xl {
-  border-radius: 1rem;
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .border-r-\[0\.5px\] {
@@ -922,18 +851,6 @@ video {
   object-fit: cover;
 }
 
-.p-5 {
-  padding: 1.25rem;
-}
-
-.p-4 {
-  padding: 1rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
-}
-
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -952,16 +869,6 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .pl-6 {
@@ -996,14 +903,14 @@ video {
   font-weight: 700;
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .opacity-40 {
@@ -1012,14 +919,6 @@ video {
 
 .opacity-50 {
   opacity: 0.5;
-}
-
-.opacity-90 {
-  opacity: 0.9;
-}
-
-.opacity-70 {
-  opacity: 0.7;
 }
 
 .opacity-80 {
@@ -1076,6 +975,10 @@ html {
 
 .hover\:bg-opacity-40:hover {
   --tw-bg-opacity: 0.4;
+}
+
+.hover\:opacity-50:hover {
+  opacity: 0.5;
 }
 
 @media (prefers-color-scheme: dark) {
