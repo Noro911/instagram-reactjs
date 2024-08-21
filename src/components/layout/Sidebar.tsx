@@ -9,7 +9,7 @@ interface IProps {
 
 export const Sidebar: React.FC<IProps> = ({ pathname }) => {
   return (
-    <div className="w-full h-full flex flex-col px-3 justify-between">
+    <div className="w-full h-screen flex flex-col px-3 justify-between">
       <div>
         <svg
           aria-label="Instagram"

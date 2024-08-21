@@ -567,6 +567,10 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .bottom-4 {
   bottom: 1rem;
 }
@@ -597,6 +601,10 @@ video {
 
 .top-3 {
   top: 0.75rem;
+}
+
+.top-0 {
+  top: 0px;
 }
 
 .z-50 {
@@ -696,6 +704,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-3\/5 {
@@ -818,6 +830,10 @@ video {
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .rounded-3xl {
